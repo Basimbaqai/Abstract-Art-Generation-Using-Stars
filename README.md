@@ -12,9 +12,9 @@ This project focuses on training deep learning models to detect constellations, 
 
 ### Deep Learning Models:
 
-- **Convolutional Neural Networks (CNNs)** for star detection.
-- **Custom neural networks** to predict lines between stars.
-- **Generative Adversarial Networks (GANs)** or other image generation models to visualize constellations.
+
+- ** Conditional Generative Adversarial Networks (CGANs)** or other image generation models to visualize constellations.
+- ** Large Vision Models (LVMs)** such as Kandinsky or Flux 1.dev
 
 ### Libraries & Frameworks:
 
