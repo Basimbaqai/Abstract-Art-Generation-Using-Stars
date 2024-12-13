@@ -49,7 +49,7 @@ def process_image(image_path, threshold_value, n_neighbors):
 
 # Streamlit UI
 def main():
-    st.title("Constellation Finder")
+    st.title("Connecting Star points Using Nearest Neighbours")
 
     # File uploader
     uploaded_file = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
