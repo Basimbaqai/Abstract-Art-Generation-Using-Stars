@@ -72,9 +72,9 @@ def main():
         # Display the images side by side
         col1, col2 = st.columns(2)
         with col1:
-            st.image(original_image, caption="Original Image", use_column_width=True, channels="GRAY")
+            st.image(original_image, caption="Original Image", use_container_width=True, channels="GRAY")
         with col2:
-            st.image(processed_image, caption="Processed Image", use_column_width=True)
+            st.image(processed_image, caption="Processed Image", use_container_width=True)
 
 
 if __name__ == "__main__":
