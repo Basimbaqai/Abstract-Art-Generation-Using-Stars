@@ -28,6 +28,16 @@ def process_image(image_path, threshold_value, n_neighbors):
     # Convert contour centers to numpy array
     contour_centers = np.array(contour_centers)
 
+    # Check if contour centers are empty
+    if len(contour_centers) == 0:
+        raise ValueError("No valid contours detected in the image.")
+
+    # Check if there are enough points for the specified number of neighbors
+    if len(contour_centers) < n_neighbors:
+        raise ValueError(
+            f"Not enough points ({len(contour_centers)}) for the specified number of neighbors ({n_neighbors})."
+        )
+
     # Perform K-Nearest Neighbors to find connections
     knn = NearestNeighbors(n_neighbors=n_neighbors)
     knn.fit(contour_centers)
@@ -49,13 +59,13 @@ def process_image(image_path, threshold_value, n_neighbors):
 
 # Streamlit UI
 def main():
-    st.title("Connecting Star points Using Nearest Neighbours")
+    st.title("Connecting Star Points Using Nearest Neighbors")
 
     # File uploader
     uploaded_file = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
 
     if uploaded_file is not None:
-        # Load the uploaded image
+        # Save the uploaded image to a temporary file
         image_path = uploaded_file.name
         with open(image_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
@@ -66,15 +76,20 @@ def main():
         # Number of neighbors slider
         n_neighbors = st.slider("Number of Neighbors", min_value=2, max_value=10, value=3, step=1)
 
-        # Process the image
-        original_image, processed_image = process_image(image_path, threshold_value, n_neighbors)
+        try:
+            # Process the image
+            original_image, processed_image = process_image(image_path, threshold_value, n_neighbors)
 
-        # Display the images side by side
-        col1, col2 = st.columns(2)
-        with col1:
-            st.image(original_image, caption="Original Image", use_container_width=True, channels="GRAY")
-        with col2:
-            st.image(processed_image, caption="Processed Image", use_container_width=True)
+            # Display the images side by side
+            col1, col2 = st.columns(2)
+            with col1:
+                st.image(original_image, caption="Original Image", use_container_width=True, channels="GRAY")
+            with col2:
+                st.image(processed_image, caption="Processed Image", use_container_width=True)
+
+        except ValueError as e:
+            # Display error messages
+            st.error(str(e))
 
 
 if __name__ == "__main__":
