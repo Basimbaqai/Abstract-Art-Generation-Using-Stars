@@ -2,13 +2,15 @@ import streamlit as st
 import cv2
 import numpy as np
 from sklearn.neighbors import NearestNeighbors
-from PIL import Image
 
 
 # Function to process the image
-def process_image(image_path, threshold_value, n_neighbors):
+def process_image(image_path, threshold_value, n_neighbors, resize_width=512, resize_height=512):
     # Load the image
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+
+    # Resize the image
+    image = cv2.resize(image, (resize_width, resize_height))
 
     # Threshold the image to find contours
     _, thresh = cv2.threshold(image, threshold_value, 255, cv2.THRESH_BINARY)
@@ -70,6 +72,10 @@ def main():
         with open(image_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
 
+        # Resize sliders
+        resize_width = st.slider("Resize Width", min_value=100, max_value=1000, value=512, step=50)
+        resize_height = st.slider("Resize Height", min_value=100, max_value=1000, value=512, step=50)
+
         # Threshold slider
         threshold_value = st.slider("Threshold Value", min_value=0, max_value=255, value=230, step=1)
 
@@ -78,7 +84,9 @@ def main():
 
         try:
             # Process the image
-            original_image, processed_image = process_image(image_path, threshold_value, n_neighbors)
+            original_image, processed_image = process_image(
+                image_path, threshold_value, n_neighbors, resize_width, resize_height
+            )
 
             # Display the images side by side
             col1, col2 = st.columns(2)
