@@ -10,7 +10,7 @@ def process_image(image_path, threshold_value, n_neighbors):
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
     # Resize the image to a fixed resolution
-    resize_width, resize_height = 512, 512
+    resize_width, resize_height = 300, 300
     image = cv2.resize(image, (resize_width, resize_height))
 
     # Threshold the image to find contours
