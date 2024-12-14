@@ -5,11 +5,12 @@ from sklearn.neighbors import NearestNeighbors
 
 
 # Function to process the image
-def process_image(image_path, threshold_value, n_neighbors, resize_width=512, resize_height=512):
+def process_image(image_path, threshold_value, n_neighbors):
     # Load the image
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-    # Resize the image
+    # Resize the image to a fixed resolution
+    resize_width, resize_height = 512, 512
     image = cv2.resize(image, (resize_width, resize_height))
 
     # Threshold the image to find contours
@@ -72,10 +73,6 @@ def main():
         with open(image_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
 
-        # Resize sliders
-        resize_width = st.slider("Resize Width", min_value=100, max_value=1000, value=512, step=50)
-        resize_height = st.slider("Resize Height", min_value=100, max_value=1000, value=512, step=50)
-
         # Threshold slider
         threshold_value = st.slider("Threshold Value", min_value=0, max_value=255, value=230, step=1)
 
@@ -84,14 +81,12 @@ def main():
 
         try:
             # Process the image
-            original_image, processed_image = process_image(
-                image_path, threshold_value, n_neighbors, resize_width, resize_height
-            )
+            original_image, processed_image = process_image(image_path, threshold_value, n_neighbors)
 
             # Display the images side by side
             col1, col2 = st.columns(2)
             with col1:
-                st.image(original_image, caption="Original Image", use_container_width=True, channels="GRAY")
+                st.image(original_image, caption="Original Image (Resized to 512x512)", use_container_width=True, channels="GRAY")
             with col2:
                 st.image(processed_image, caption="Processed Image", use_container_width=True)
 
