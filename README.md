@@ -1,29 +1,17 @@
-# Constellation Image Generation with Deep Learning
+# Star Points Connection & Generation
 
-This project focuses on training deep learning models to detect constellations, connect the stars to form lines, and generate images of the constellations. The goal is to build a system that can recognize and visualize constellations from star data.
+This repository contains a Jupyter Notebook designed for generating, visualizing, and analyzing star point connections to form constellations. The notebook leverages mathematical and computational techniques to simulate and interpret star patterns, which can be applied in astronomy-related projects or educational contexts.
 
 ## Features
 
-- **Star Detection**: Using a deep learning model to identify stars in the night sky.
-- **Line Generation**: Connecting the identified stars to form the lines that represent constellations.
-- **Image Generation**: Generating visual representations of constellations using a generative model.
+- **Star Point Generation**: Create random or predefined star patterns.
+- **Constellation Formation**: Connect points based on various algorithms or rules.
+- **Visualization**: Interactive and static plots for clear representation.
+- **Customization**: Options to modify parameters like density, connectivity, and star properties.
 
-## Tech Stack
+## Installation
 
-### Deep Learning Models:
-
-
-- ** Conditional Generative Adversarial Networks (CGANs)** or other image generation models to visualize constellations.
-- ** Large Vision Models (LVMs)** such as Kandinsky or Flux 1.dev
-
-### Libraries & Frameworks:
-
-- **TensorFlow / PyTorch** (for deep learning model training)
-- **OpenCV** (for image processing tasks)
-- **NumPy, Pandas** (for data manipulation)
-- **Matplotlib** (for visualization)
-
-### Data:
-
-- **Star data** (coordinates of stars in the sky) to train the models.
-- **Images of constellations** or star maps for visualization and training the image generation model.
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/star-points-generation.git
+   cd star-points-generation
