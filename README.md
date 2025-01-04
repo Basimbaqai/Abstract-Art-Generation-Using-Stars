@@ -29,6 +29,6 @@ This project leverages pre-trained models from the Hugging Face Diffusers librar
 - Step 1: Generate Star Skeletons
 Use the notebook to generate star point connections and visualize the skeleton of constellations.
 Save the skeleton image, e.g., connections_result.jpg.
-Step 2: Generate Abstract Art
+- Step 2: Generate Abstract Art
 Load the skeleton image and process it using Hugging Face's ControlNet model.
 Use the provided example code snippet in the notebook 
