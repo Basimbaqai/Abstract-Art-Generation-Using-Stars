@@ -20,7 +20,7 @@ This project leverages pre-trained models from the Hugging Face Diffusers librar
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/star-points-generation.git
+   git clone (https://github.com/Basimbaqai/Abstract-Art-Generation-Using-Stars.git)
    cd star-points-generation
 2. Install the required Python packages
 3. Ensure you have access to a GPU with CUDA support for optimal performance.
